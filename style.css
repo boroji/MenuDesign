@@ -12,6 +12,12 @@
     box-sizing: border-box;
 }
 
+/* 
+---------------
+(1)- adding 100% for body and declaring colors
+---------------
+*/
+
 :root {
     --primary: hsl(60, 100%, 50%);
     --accent: hsl(240, 100%, 50%);
@@ -29,6 +35,12 @@ body {
     align-items: center;
 }
 
+/* 
+---------------
+(2)- resting link styles
+---------------
+*/
+
 a:link,
 a:visited,
 a:active {
@@ -36,11 +48,18 @@ a:active {
     color: var(--shadow);
 }
 
+/* 
+---------------
+(3)- add navigation styling
+---------------
+*/
+
 nav {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* (5)- initial state */
     clip-path: circle(0% at top left);
     transition: all 0.4s ease-out 0.4s;
 }
@@ -57,19 +76,21 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* 
+---------------
+(4)- add main style
+---------------
+*/
+
 .nav-active {
     clip-path: circle(150% at top left);
 }
 
-
-button {
-    outline: none;
-    border: none;
-    padding: 10px 18px;
-    color: var(--negative);
-    background-color: var(--shadow);
-    cursor: pointer;
-}
+/* 
+---------------
+(6)- add main style
+---------------
+*/
 
 main {
     width: 100%;
@@ -85,9 +106,15 @@ main {
 main section {
     width: 25%;
     background-color: var(--primary);
-    transform: rotateY(90deg);
+    /* (10)- add display none after JavaScript */
     display: none;
 }
+
+/* 
+---------------
+(7)- add main closed animation
+---------------
+*/
 
 .closed {
     transform: rotateY(0);
@@ -100,9 +127,28 @@ main section {
     }
 }
 
-.active {
+/* 
+---------------
+(8)- adding reverse rotate
+---------------
+*/
+
+.rotate-active {
+    transform: rotateY(90deg);
     animation: rotate 0.4s ease-out alternate forwards;
 }
+
+@keyframes rotate {
+    to {
+        transform: rotateY(0);
+    }
+}
+
+/* 
+---------------
+(9)- adding delay
+---------------
+*/
 
 main section:nth-child(1) {
     animation-delay: 0.1s;
@@ -120,8 +166,53 @@ main section:nth-child(4) {
     animation-delay: 0.4s;
 }
 
-@keyframes rotate {
-    to {
-        transform: rotateY(0);
-    }
+/* 
+---------------
+(10)- styling button
+---------------
+*/
+
+button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* 
+---------------
+(12)- adding transition after JavaScript
+---------------
+*/
+
+.top,
+.middle,
+.bottom {
+    fill: none;
+    stroke: #000;
+    stroke-width: 15px;
+    transition: all 0.4s ease-out;
+}
+
+/* 
+---------------
+(11)- adding active class
+---------------
+*/
+
+.top-active {
+    transform-origin: left;
+    transform: translate(6px, 4px) rotate(405deg);
+}
+
+.middle-active {
+    transform-origin: left;
+    transform: translateX(-200px);
+}
+
+.bottom-active {
+    transform-origin: right;
+    transform: translate(10px, -40px) rotate(-405deg);
 }
